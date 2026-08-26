@@ -32,11 +32,12 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(12, 217);
+            button1.Location = new Point(12, 110);
             button1.Name = "button1";
             button1.Size = new Size(92, 29);
             button1.TabIndex = 0;
@@ -66,18 +67,28 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 199);
+            label3.Location = new Point(12, 92);
             label3.Name = "label3";
             label3.Size = new Size(182, 15);
             label3.TabIndex = 3;
             label3.Text = "continue by pressing start button";
             label3.Click += label3_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(12, 57);
+            label4.Name = "label4";
+            label4.Size = new Size(188, 15);
+            label4.TabIndex = 4;
+            label4.Text = "here you can make and save notes";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(236, 258);
+            ClientSize = new Size(236, 146);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -94,5 +105,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Label label4;
     }
 }

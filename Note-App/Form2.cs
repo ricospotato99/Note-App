@@ -39,32 +39,43 @@ namespace Note_App
 
             table = new DataTable();
             table.Columns.Add("Title", typeof(string));
-            table.Columns.Add("message", typeof(string));
+            table.Columns.Add("Message", typeof(string));
 
             dataGridView1.DataSource = table;
 
-            dataGridView1.Columns["Message"].Visible = false;
-            dataGridView1.Columns["Title"].Width = 190;
+            // hide the message column and set title width if columns exist
+            if (dataGridView1.Columns.Contains("Message"))
+                dataGridView1.Columns["Message"].Visible = false;
+            if (dataGridView1.Columns.Contains("Title"))
+                dataGridView1.Columns["Title"].Width = 185;
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentCell == null)
+                return;
+
             int index = dataGridView1.CurrentCell.RowIndex;
 
-            if (index < -1)
+            if (index >= 0 && index < dataGridView1.Rows.Count)
             {
-                textBox1.Text = dataGridView1.Rows[index].Cells[0].Value.ToString();
-                textBox2.Text = dataGridView1.Rows[index].Cells[1].Value.ToString();
+                var titleVal = dataGridView1.Rows[index].Cells[0].Value;
+                var messageVal = dataGridView1.Rows[index].Cells[1].Value;
+                textBox1.Text = titleVal?.ToString() ?? string.Empty;
+                textBox2.Text = messageVal?.ToString() ?? string.Empty;
             }
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
+            if (dataGridView1.CurrentCell == null)
+                return;
 
-            table.Rows[index].Delete();
+            int index = dataGridView1.CurrentCell.RowIndex;
+            if (index >= 0 && index < table.Rows.Count)
+                table.Rows[index].Delete();
         }
     }
 }
