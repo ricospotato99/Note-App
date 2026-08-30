@@ -9,9 +9,11 @@ namespace Note_App
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             Form2 form2 = new Form2();
             form2.Show();
             Hide();
+
         }
 
         private void label3_Click(object sender, EventArgs e)
