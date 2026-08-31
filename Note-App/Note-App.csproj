@@ -11,6 +11,6 @@
 
 <!-- Pre-build step: ensure any running Note-App.exe processes are stopped so the build can overwrite the exe -->
 <Target Name="KillRunningNoteApp" BeforeTargets="BeforeBuild">
-  <Exec Command="powershell -NoProfile -Command &quot;Get-Process -Name 'Note-App' -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue }&quot;" />
+  <Exec Command="powershell -NoProfile -Command &quot;try { Get-Process -Name 'Note-App' -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force -ErrorAction SilentlyContinue } } catch { } ; exit 0&quot;" />
 </Target>
 </Project>
